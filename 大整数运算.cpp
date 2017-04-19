@@ -1,5 +1,7 @@
 #include<cstdio>
 #include<cstring>
+
+int r=0;
 //定义大整数类型bign 
 struct bign{
 	int d[1000];//记录大整数各个位上的值(注意是反过来的) 
@@ -76,7 +78,20 @@ bign multi(bign a,int b){
 } 
 //高精度与低精度的除法(正数) 
 bign divide(bign a,int b,int &r){//r为余数 
-	
+	bign c;
+	c.len=a.len;//被除数的每一位和商的每一位是一一对应的，因此先令长度相等 
+	for(int i=a.len-1;i>=0;i--){//从高位开始 
+		r=r*10+a.d[i];
+		if(r<b)c.d[i]=0;
+		else{
+			c.d[i]=r/b;
+			r=r%b;
+		} 
+	} 
+	while(c.len-1>=1&&c.d[c.len-1]==0){
+		c.len--;//去除最高位的所有可能的0，同时保证个位有数字 
+	}
+	return c;
 } 
 //输出一个bign
 void print(bign a){
@@ -96,6 +111,8 @@ int main(){
 	print(sub(a,b));//输出两数之差 
 	printf("\n");
 	print(multi(a,c));//输出两数之积 
+	printf("\n");
+	print(divide(a,c,r));//输出两数之积 
 	printf("\n");
 	return 0;
 }
