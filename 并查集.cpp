@@ -47,6 +47,11 @@ int findMother(int x){
 } 
 //递归写法：
 int findfather(int x){
-	
+	if(v==father[v])return v;//找到根结点
+	else{
+		int F=findFather(father[v]);//递归寻找father[v]的根结点F 
+		father[v]=F;
+		return F;
+	} 
 } 
 
