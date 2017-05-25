@@ -1,0 +1,15 @@
+//ÖÐÐø±éÀú
+struct node{
+	string data;
+	node* lchild;
+	node* rchild;
+};
+
+void inorder(node* root){
+	if(root==NULL){
+		return;
+	}
+	inorder(root->lchild);
+	printf("%d\n",root->data);
+	inorder(root->rchild);
+} 
