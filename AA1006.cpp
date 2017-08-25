@@ -4,8 +4,6 @@
 #include<cstdio>
 #include<iostream>
 using namespace std;
-
-
 int main(){
 	int n,mincome=24*60*60,maxleave=0,hh,mm,ss;
 	string minname,maxname;
