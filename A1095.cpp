@@ -43,6 +43,7 @@ int main(){
 				parkTime[all[i].id]=0;//map中还没有这个车牌号，置零 
 			} 
 			parkTime[all[i].id]+=inTime;//增加该车牌号的总停留时间 
+			maxTime=max(maxTime,parkTime[all[i].id]);//更新最大总停留时间 
 		}
 	} 
 	sort(valid,valid+num,cmpByTime);//把有效记录按时间从小到大排序
